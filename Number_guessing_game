@@ -1,0 +1,35 @@
+import random
+
+def number_guessing_game():
+    print("Welcome to the Number Guessing Game!")
+    
+    # Generate random number between 1–50
+    number_to_guess = random.randint(1, 50)
+    attempts = 0
+    
+    while True:
+        try:
+            guess = int(input("Enter your guess (1-50): "))
+            attempts += 1
+
+            if guess < 1 or guess > 50:
+                print("Please enter a number between 1 and 50.")
+                continue
+
+            if guess < number_to_guess:
+                print("Too low! Try again.")
+            elif guess > number_to_guess:
+                print("Too high! Try again.")
+            else:
+                print(f"Congratulations! You guessed the number in {attempts} attempts.")
+                break
+        except ValueError:
+            print("Invalid input! Please enter an integer.")
+
+# Bonus: Play again option
+while True:
+    number_guessing_game()
+    play_again = input("Do you want to play again? (yes/no): ").lower()
+    if play_again != 'yes':
+        print("Thanks for playing! Goodbye.")
+        break
